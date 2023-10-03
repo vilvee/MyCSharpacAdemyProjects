@@ -120,7 +120,19 @@ Choose an operation:
                     break;
             }
 
-            for (int i = 0; i < 5; i++)
+            Console.WriteLine("How many questions do you want to answer?");
+            
+           bool correct =  int.TryParse(operationSymbol, out int number);
+
+            while (!correct)
+            {
+                Console.WriteLine("Bad input\nHow many questions do you want to answer?");
+
+                correct = int.TryParse(operationSymbol, out  number);
+            }
+                
+
+            for (int i = 0; i < number; i++)
             {
                 Console.Clear();
 
