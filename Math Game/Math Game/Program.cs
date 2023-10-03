@@ -1,15 +1,18 @@
-﻿using System.Numerics;
-
+﻿
 namespace Math_Game
 {
-    internal class Program
+    public class Program
     {
-        /* You need to create a Math game containing the 4 basic operations
-         The divisions should result on INTEGERS ONLY and dividends should go from 0 to 100. Example: Your app shouldn't present the division 7/2 to the user, since it doesn't result in an integer.
-         Users should be presented with a menu to choose an operation
-         You should record previous games in a List and there should be an option in the menu for the user to visualize a history of previous games.
-         You don't need to record results on a database. Once the program is closed the results will be deleted.*/
-        public static List<Game> Games = new List<Game>();
+        public static List<Game> Games = new List<Game>(); //Played games in one session
+
+        public enum Operation
+        {
+            Addition,
+            Subtraction,
+            Division,
+            Multiplication
+        }
+
 
         static void Main(string[] args)
         {
@@ -18,53 +21,50 @@ namespace Math_Game
 
         public static void Menu()
         {
-            Console.Clear();
+            
 
-            string choice = "";
+            string choice;
 
             do
             {
+                Console.Clear();
+
                 Console.WriteLine(@"
 Choose an operation:
 
 [A] ADDITION
-[B] SUBSTARCTION
+[B] SUBTARCTION
 [C] DIVISION
 [D] MULTIPLICATION
 [E] DISPLAY SCORES
 [Q] QUIT");
 
-                choice = Console.ReadLine();
-                switch (choice.ToLower())
+                choice = Console.ReadLine().ToLower();
+                switch (choice)
                 {
                     case "a":
-                        Console.Clear();
-                        Addition();
-
+                        Game(Operation.Addition);
                         break;
                     case "b":
-                        Console.Clear();
-                        Subtraction();
+                        Game(Operation.Subtraction);
                         break;
                     case "c":
-                        Console.Clear();
-                        Division();
+                        Game(Operation.Division);
                         break;
                     case "d":
-                        Console.Clear();
-                        Multiplication();
+                        Game(Operation.Multiplication);
                         break;
                     case "e":
-                        Console.Clear();
                         DisplayPreviousScores();
                         break;
+                    case "q":
+                        Console.WriteLine("Thank you for playing. Goodbye!");
+                        break;
                     default:
-                        Console.WriteLine();
+                        Console.WriteLine("The choice is not valid. Please select a valid option.");
                         break;
                 }
             } while (choice != "q");
-
-
         }
 
         public static int RandomNumberGenerator()
@@ -78,144 +78,82 @@ Choose an operation:
 
         public static void DisplayPreviousScores()
         {
+            Console.Clear();
+           
+
             foreach (Game game in Games)
             {
                 Console.WriteLine(game.ToString());
             }
+
+            Console.WriteLine("\nPress any key to go back");
+
+            Console.ReadKey();
         }
 
-        public static void Addition()
+        public static void Game(Operation operation)
         {
+            
+            Game game = new Game(operation);
 
-            Game game = new Game();
+            string operationSymbol = "";
 
-            for (int i = 0; i < 6; i++)
+            Func<int, int, double> operationFunc = null;
+
+            switch (operation)
             {
-                Console.Clear();
-                int number1 = RandomNumberGenerator();
-                int number2 = RandomNumberGenerator();
-                int correctAnswer = number1 + number2;
-                int userAnswer;
-
-                Console.WriteLine("Addition");
-                Console.WriteLine($"{number1} + {number2}");
-
-                int.TryParse(Console.ReadLine(), out userAnswer);
-
-                if (correctAnswer == userAnswer)
-                {
-                    game.Score++;
-                    continue;
-                }
+                case Operation.Addition:
+                    operationSymbol = "+";
+                    operationFunc = (a, b) => a + b;
+                    break;
+                case Operation.Subtraction:
+                    operationSymbol = "-";
+                    operationFunc = (a, b) => a - b;
+                    break;
+                case Operation.Division:
+                    operationSymbol = "/";
+                    operationFunc = (a, b) => a / (double)b;
+                    break;
+                case Operation.Multiplication:
+                    operationSymbol = "*";
+                    operationFunc = (a, b) => a * b;
+                    break;
             }
 
-            Console.WriteLine($"You finished the game with a score of {game.Score}");
-            Games.Add(game);
-        }
-
-
-        public static void Subtraction()
-        {
-            Console.Clear();
-
-            Game game = new Game();
-
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Console.Clear();
-                int number1 = RandomNumberGenerator();
-                int number2 = RandomNumberGenerator();
-                int correctAnswer = number1 - number2;
-                int userAnswer;
-
-                Console.WriteLine("Subtraction");
-                Console.WriteLine($"{number1} - {number2}");
-
-                int.TryParse(Console.ReadLine(), out userAnswer);
-
-                if (correctAnswer == userAnswer)
-                {
-                    game.Score++;
-                    continue;
-                }
-
-            }
-
-            Console.WriteLine($"You finished the game with a score of {game.Score}");
-            Games.Add(game);
-        }
-
-        public static void Division()
-        {
-            Console.Clear();
-
-            Game game = new Game();
-
-            for (int i = 0; i < 6; i++)
-            {
-                Console.Clear();
-
-                int number1,
-                    number2,
-                    userAnswer;
 
                 double correctAnswer;
+                int number1,
+                    number2;
 
                 do
                 {
                     number1 = RandomNumberGenerator();
                     number2 = RandomNumberGenerator();
-                    correctAnswer = number1 / (double)number2;
-                    Console.WriteLine(correctAnswer);
-                } while ((correctAnswer % 1) != 0);
 
-                Console.WriteLine("Division");
-                Console.WriteLine($"{number1} / {number2}");
-                int.TryParse(Console.ReadLine(), out userAnswer);
+                    correctAnswer = operationFunc(number1, number2);
 
-                if (correctAnswer == userAnswer)
+                } while (correctAnswer % 1 != 0);
+
+
+                Console.WriteLine($"{operation}");
+                Console.WriteLine($"{number1} {operationSymbol} {number2}");
+
+                if (double.TryParse(Console.ReadLine(), out double userAnswer) && correctAnswer == userAnswer)
                 {
                     game.Score++;
-                    continue;
                 }
-
             }
 
-            Console.WriteLine($"You finished the game with a score of {game.Score}");
+            Console.WriteLine($"You finished the game with a score of {game.Score}\n" +
+                $"Press Any Key to return to Main Menu");
+
             Games.Add(game);
+
+            Console.ReadKey();
+            
         }
-
-        public static void Multiplication()
-        {
-            Console.Clear();
-
-            Game game = new Game();
-
-            for (int i = 0; i < 6; i++)
-            {
-                Console.Clear();
-                int number1 = RandomNumberGenerator();
-                int number2 = RandomNumberGenerator();
-                int correctAnswer = number1 + number2;
-                int userAnswer;
-
-                Console.WriteLine("Multiplication");
-                Console.WriteLine($"{number1} * {number2}");
-
-                int.TryParse(Console.ReadLine(), out userAnswer);
-
-                if (correctAnswer == userAnswer)
-                {
-                    game.Score++;
-                    continue;
-                }
-
-            }
-
-            Console.WriteLine($"You finished the game with a score of {game.Score}");
-            Games.Add(game);
-        }
-
-
     }
 }

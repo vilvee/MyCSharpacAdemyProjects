@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Math_Game.Program;
 
 namespace Math_Game
 {
@@ -12,17 +13,22 @@ namespace Math_Game
 
         public int Score { get; set; }
 
-        public Game()
+        public Operation OperationName { get; set; }
+
+        public Game(Operation operation)
         {
 
             DateTime = DateTime.Now;
             Score = 0;
+            OperationName = operation;
 
         }
 
         public override string ToString()
         {
-            return $"Score: {this.Score}       {this.DateTime}";
+            const string FORMAT = "{0, -15} Score:{1, -10} {2, -20}";
+
+           return String.Format( FORMAT, OperationName, this.Score,this.DateTime);
         }
     }
 }
