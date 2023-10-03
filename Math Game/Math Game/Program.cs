@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics;
+
 namespace Math_Game
 {
     public class Program
@@ -21,7 +23,7 @@ namespace Math_Game
 
         public static void Menu()
         {
-            
+
 
             string choice;
 
@@ -79,7 +81,7 @@ Choose an operation:
         public static void DisplayPreviousScores()
         {
             Console.Clear();
-           
+
 
             foreach (Game game in Games)
             {
@@ -93,7 +95,7 @@ Choose an operation:
 
         public static void Game(Operation operation)
         {
-            
+
             Game game = new Game(operation);
 
             string operationSymbol = "";
@@ -121,16 +123,16 @@ Choose an operation:
             }
 
             Console.WriteLine("How many questions do you want to answer?");
-            
-           bool correct =  int.TryParse(operationSymbol, out int number);
+
+            bool correct = int.TryParse(Console.ReadLine(), out int number);
 
             while (!correct)
             {
                 Console.WriteLine("Bad input\nHow many questions do you want to answer?");
 
-                correct = int.TryParse(operationSymbol, out  number);
+                correct = int.TryParse(Console.ReadLine(), out number);
             }
-                
+
 
             for (int i = 0; i < number; i++)
             {
@@ -158,6 +160,8 @@ Choose an operation:
                     game.Score++;
                 }
             }
+            game.Stopwatch.Stop();
+            game.gameTime = game.Stopwatch.Elapsed.ToString(@"m\:ss");
 
             Console.WriteLine($"You finished the game with a score of {game.Score}\n" +
                 $"Press Any Key to return to Main Menu");
@@ -165,7 +169,7 @@ Choose an operation:
             Games.Add(game);
 
             Console.ReadKey();
-            
+
         }
     }
 }
