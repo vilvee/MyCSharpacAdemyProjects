@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9T/lrNeK1hpwEBP5fhH5qaKrt04Iyp/M9etgfNl1x76oMnnDkPX0QZU5yjD6PEbSx0ioauy4UcPVWimK1RMDQQ==",
+  "dgSpecHash": "4dnVu/9rV0gsBc/eS7oJVe/dub+/SSuTGm3MTzVMEep2XVbvl5oztnZJviu1E60D3dpL2i5FI7seXdVUS0J61A==",
   "success": true,
   "projectFilePath": "C:\\Users\\vvile\\source\\repos\\MyCSharpacAdemyProjects\\Calculator\\Calculator\\Calculator.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vvile\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
