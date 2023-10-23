@@ -58,60 +58,60 @@ namespace CalculatorLibrary
             // Use a switch statement to do the math.
             switch (op)
             {
-                case 1:
+                case Operation.Add:
                     result = num1 + num2.Value;
-                    writer.WriteValue(Operation.Add);
+                    writer.WriteValue(op);
                     break;
-                case 2:
+                case Operation.Subtract:
                     result = num1 - num2.Value;
-                    writer.WriteValue(Operation.Subtract);
+                    writer.WriteValue(op);
                     break;
-                case 3:
+                case Operation.Multiply:
                     result = num1 * num2.Value;
-                    writer.WriteValue(Operation.Multiply);
+                    writer.WriteValue(op);
                     break;
-                case 4:
+                case Operation.Divide:
                     if (num2 != 0)
                     {
                         result = num1 / num2.Value;
                     }
-                    writer.WriteValue(Operation.Divide);
+                    writer.WriteValue(op);
                     break;
-                case 5:
+                case Operation.Power:
                     result = Math.Pow(num1, num2.Value);
-                    writer.WriteValue(Operation.Power);
+                    writer.WriteValue(op);
                     break;
-                case 6:
+                case Operation.SquareRoot:
                     result = Math.Sqrt(num1);
-                    writer.WriteValue(Operation.SquareRoot);
+                    writer.WriteValue(op);
                     break;
-                case 7:
+                case Operation.TenX:
                     result = num1 * 10;
-                    writer.WriteValue(Operation.TenX);
+                    writer.WriteValue(op);
                     break;
-                case 8:
+                case Operation.Sine:
                     result = Math.Sin(num1);
-                    writer.WriteValue(Operation.Sine);
+                    writer.WriteValue(op);
                     break;
-                case 9:
+                case Operation.Cosine:
                     result = Math.Cos(num1);
-                    writer.WriteValue(Operation.Cosine);
+                    writer.WriteValue(op);
                     break;
-                case 10:
+                case Operation.Tangent:
                     result = Math.Tan(num1);
-                    writer.WriteValue(Operation.Tangent);
+                    writer.WriteValue(op);
                     break;
-                case 11:
+                case Operation.Cotangent:
                     result = 1 / Math.Tan(num1);
-                    writer.WriteValue(Operation.Cotangent);
+                    writer.WriteValue(op);
                     break;
-                case 12:
+                case Operation.Secant:
                     result = 1 / Math.Cos(num1);
-                    writer.WriteValue(Operation.Secant);
+                    writer.WriteValue(op);
                     break;
-                case 13:
+                case Operation.Cosecant:
                     result = 1/ Math.Sin(num1);
-                    writer.WriteValue(Operation.Cosecant);
+                    writer.WriteValue(op);
                     break;
                 // Return text for an incorrect option entry.
                 default:
@@ -137,11 +137,11 @@ namespace CalculatorLibrary
         }
 
 
-        public void StoreCalculationHistory(double num1, int op, double result, double? num2 = null)
+        public void StoreCalculationHistory(double num1, Operation op, double result, double? num2 = null)
         {
  
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Operation: {0}\n", (Operation)op);
+            sb.AppendFormat("Operation: {0}\n", op);
             sb.AppendFormat("Operand 1: {0}\n", num1);
 
             if (num2 != null)

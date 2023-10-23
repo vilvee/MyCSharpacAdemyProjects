@@ -18,6 +18,7 @@ C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\De
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\Calculator.runtimeconfig.json
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\Calculator.dll
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\Calculator.pdb
+C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\CalculatorLibrary.dll
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\CalculatorLibrary.pdb
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\obj\Debug\net8.0\Calculator.csproj.AssemblyReference.cache
@@ -32,4 +33,3 @@ C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\obj\De
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\obj\Debug\net8.0\Calculator.pdb
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\obj\Debug\net8.0\Calculator.genruntimeconfig.cache
 C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\obj\Debug\net8.0\ref\Calculator.dll
-C:\Users\vvile\source\repos\MyCSharpacAdemyProjects\Calculator\Calculator\bin\Debug\net8.0\Newtonsoft.Json.dll

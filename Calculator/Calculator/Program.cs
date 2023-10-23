@@ -127,7 +127,6 @@ namespace CalculatorProgram
             return cleanInput;
         }
 
-
         static bool DisplayHistory(Calculator calculator)
         {
             calculator.PrintHistory();

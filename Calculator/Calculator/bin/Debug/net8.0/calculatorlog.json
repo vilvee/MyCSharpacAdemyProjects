@@ -1,32 +1,7 @@
 {
   "Operations": [
     {
-      "Operand1": 4.0,
-      "Operand2": 5.0,
-      "Operation": 1,
-      "Result": 9.0
-    },
-    {
-      "Operand1": 0.0,
-      "Operand2": 0.0,
+      "Operand1": 56.0,
       "Operation": 13,
-      "Result": "Infinity"
-    },
-    {
-      "Operand1": 75.0,
-      "Operand2": 0.0,
-      "Operation": 10,
-      "Result": -0.42070095062112434
-    },
-    {
-      "Operand1": -7.0,
-      "Operand2": 0.0,
-      "Operation": 9,
-      "Result": 0.7539022543433046
-    },
-    {
-      "Operand1": 7.0,
-      "Operand2": 0.0,
-      "Operation": 6,
-      "Result": 2.6457513110645907
+      "Result": -1.917358026345732
     }
